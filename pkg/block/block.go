@@ -27,7 +27,7 @@ func (b *Block) String() string {
 func MineBlock(lastBlock *Block, data []byte) *Block {
 	timestamp := time.Now().Unix()
 	var lastHash = lastBlock.Hash
-	var hash = []byte("fixme-hash")
+	var hash = hash(timestamp, lastHash, data)
 
 	return NewBlock(timestamp, lastHash, hash, data)
 }
