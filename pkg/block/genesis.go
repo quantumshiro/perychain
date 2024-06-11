@@ -1,5 +1,5 @@
 package block
 
-func (b *Block) Genesis() *Block {
+func Genesis() *Block {
 	return NewBlock(1, []byte{}, []byte{}, []byte{})
 }
