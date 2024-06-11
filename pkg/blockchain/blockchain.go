@@ -37,3 +37,16 @@ func (bc *BlockChain) Validate(chain *BlockChain) bool {
 
 	return true
 }
+
+// replace the chain
+func (bc *BlockChain) ReplaceChain(newChain *BlockChain) {
+	if len(newChain.Chain) <= len(bc.Chain) {
+		return
+	}
+
+	if !bc.Validate(newChain) {
+		return
+	}
+
+	bc.Chain = newChain.Chain
+}
