@@ -10,6 +10,10 @@ type BlockChain struct {
 	Chain []*block.Block
 }
 
+func NewBlockChain() *BlockChain {
+	return &BlockChain{[]*block.Block{block.Genesis()}}
+}
+
 func (bc *BlockChain) AddBlock(data []byte) {
 	lastBlock := bc.Chain[len(bc.Chain)-1]
 	newBlock := block.MineBlock(lastBlock, data)
