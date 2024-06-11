@@ -28,6 +28,9 @@ func mine(w http.ResponseWriter, r *http.Request) {
 	bc.AddBlock(data)
 
 	json.NewEncoder(w).Encode(bc.Chain)
+
+	// redirect
+	http.Redirect(w, r, "/blocks", http.StatusSeeOther)
 }
 
 func root(w http.ResponseWriter, r *http.Request) {
