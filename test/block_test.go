@@ -17,9 +17,8 @@ func TestBlock(t *testing.T) {
 
 func TestGenesis(t *testing.T) {
 	b := block.Genesis()
-	want := block.NewBlock(1, []byte{}, []byte{}, []byte{}).String()
 
-	if b.String() != want {
-		t.Errorf("Block.Genesis() = %s, want %s", b.String(), want)
+	if b.String() != block.NewBlock(1, []byte{}, []byte{}, []byte{}).String() {
+		t.Errorf("Block.Genesis() = %s, want %s", b.String(), block.NewBlock(1, []byte{}, []byte{}, []byte{}).String())
 	}
 }
