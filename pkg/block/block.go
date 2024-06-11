@@ -1,6 +1,7 @@
 package block
 
 import (
+	"crypto/sha256"
 	"time"
 )
 
@@ -29,4 +30,8 @@ func MineBlock(lastBlock *Block, data []byte) *Block {
 	var hash = []byte("fixme-hash")
 
 	return NewBlock(timestamp, lastHash, hash, data)
+}
+
+func Hash(timestamp int64, lastHash []byte, data []byte) []byte {
+	return sha256.New().Sum([]byte(string(rune(timestamp)) + string(lastHash) + string(data)))
 }
