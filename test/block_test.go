@@ -14,3 +14,12 @@ func TestBlock(t *testing.T) {
 		t.Errorf("Block.String() = %s, want %s", b.String(), want)
 	}
 }
+
+func TestGenesis(t *testing.T) {
+	b := block.Genesis()
+	want := block.NewBlock(1, []byte{}, []byte{}, []byte{}).String()
+
+	if b.String() != want {
+		t.Errorf("Block.Genesis() = %s, want %s", b.String(), want)
+	}
+}
