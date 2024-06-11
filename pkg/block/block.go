@@ -32,6 +32,10 @@ func MineBlock(lastBlock *Block, data []byte) *Block {
 	return NewBlock(timestamp, lastHash, hash, data)
 }
 
-func Hash(timestamp int64, lastHash []byte, data []byte) []byte {
+func hash(timestamp int64, lastHash []byte, data []byte) []byte {
 	return sha256.New().Sum([]byte(string(rune(timestamp)) + string(lastHash) + string(data)))
+}
+
+func (b *Block) BlockHash() []byte {
+	return hash(b.timestamp, b.lastHash, b.data)
 }
